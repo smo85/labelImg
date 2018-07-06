@@ -25,10 +25,12 @@ class LabelDialog(QDialog):
         model.setStringList(listItem)
         completer = QCompleter()
         completer.setModel(model)
-        self.edit.setCompleter(completer)
-
+        # self.edit.setCompleter(completer)
+        # self.x15 = x_other
+        # self.y15 = y_other
         layout = QVBoxLayout()
-        layout.addWidget(self.edit)
+        #如果需要编辑将下行反注释
+        #layout.addWidget(self.edit)
         self.buttonBox = bb = BB(BB.Ok | BB.Cancel, Qt.Horizontal, self)
         bb.button(BB.Ok).setIcon(newIcon('done'))
         bb.button(BB.Cancel).setIcon(newIcon('undo'))
@@ -44,7 +46,10 @@ class LabelDialog(QDialog):
             self.listWidget.itemDoubleClicked.connect(self.listItemDoubleClick)
             layout.addWidget(self.listWidget)
 
+        self.resize(200,400)
+
         self.setLayout(layout)
+        # self.move(self.x15, self.y15)
 
     def validate(self):
         try:
@@ -62,14 +67,20 @@ class LabelDialog(QDialog):
             # PyQt5: AttributeError: 'str' object has no attribute 'trimmed'
             self.edit.setText(self.edit.text())
 
-    def popUp(self, text='', move=True):
+    def popUp(self, text='', move=True, x15=0, y15=0):
         self.edit.setText(text)
         self.edit.setSelection(0, len(text))
         self.edit.setFocus(Qt.PopupFocusReason)
+
         if move:
             self.move(QCursor.pos())
-        return self.edit.text() if self.exec_() else None
-
+            x15, y15=self.getQCursor_coordinate()
+            return (self.edit.text() if self.exec_() else None), (x15, y15)
+        else:
+            self.move(x15, y15)
+            return self.edit.text() if self.exec_() else None
+    def getQCursor_coordinate(self):
+        return self.x(), self.y()
     def listItemClick(self, tQListWidgetItem):
         try:
             text = tQListWidgetItem.text().trimmed()
