@@ -106,22 +106,7 @@ class MainWindow(QMainWindow, WindowMixin):
         # For loading all image under a directory
         self.mImgList = []
         self.dirname = None
-        self.labelHist = ["发色-不确定", "发色-棕", "发色-橙", "发色-灰", "发色-白", "发色-蓝", "发色-黄", "发色-黑"]
-        self.labelHist1 = ["鞋颜色-不确定", "鞋颜色-条纹", "鞋颜色-棕色/驼色", "鞋颜色-橙色", "鞋颜色-波点", "鞋颜色-灰色", "鞋颜色-白色", "鞋颜色-粉色", "鞋颜色-紫色", "鞋颜色-红色", "鞋颜色-绿色", "鞋颜色-肉色/裸色", "鞋颜色-花色", "鞋颜色-蓝色", "鞋颜色-黄色", "鞋颜色-黑色"]
-        self.labelHist2 = ["头部配饰-不确定", "头部配饰-口罩", "头部配饰-围巾", "头部配饰-太阳镜", "头部配饰-帽子/头巾", "头部配饰-披肩", "头部配饰-无", "头部配饰-普通眼镜", "头部配饰-有色眼镜"]
-        self.labelHist3 = ["年龄层-不确定", "年龄层-中年", "年龄层-婴幼儿", "年龄层-少年", "年龄层-老年", "年龄层-青年"]
-        self.labelHist4 = ["情绪-不确定", "情绪-心情一般", "情绪-心情不好", "情绪-心情好"]
-        self.labelHist5 = ["上装袖长-不确定", "上装袖长-中长袖", "上装袖长-无袖/吊带/抹胸", "上装袖长-短袖", "上装袖长-长袖"]
-        self.labelHist6 = ["人群属性-不确定", "人群属性-中年人", "人群属性-务实工薪", "人群属性-商务精英", "人群属性-婴幼儿", "人群属性-学生", "人群属性-居家人士", "人群属性-时尚达人", "人群属性-老年人"]
-        self.labelHist7 = ["上衣颜色-不确定", "上衣颜色-条纹", "上衣颜色-棕色/驼色", "上衣颜色-橙色", "上衣颜色-波点", "上衣颜色-灰色", "上衣颜色-白色", "上衣颜色-粉色", "上衣颜色-紫色", "上衣颜色-红色", "上衣颜色-绿色", "上衣颜色-肉色/裸色", "上衣颜色-花色", "上衣颜色-蓝色", "上衣颜色-黄色", "上衣颜色-黑色"]
-        self.labelHist8 = ["下衣颜色-不确定", "下衣颜色-条纹", "下衣颜色-棕色/驼色", "下衣颜色-橙色", "下衣颜色-波点", "下衣颜色-灰色", "下衣颜色-白色", "下衣颜色-粉色", "下衣颜色-紫色", "下衣颜色-红色", "下衣颜色-绿色", "下衣颜色-肉色/裸色", "下衣颜色-花色", "下衣颜色-蓝色", "下衣颜色-黄色", "下衣颜色-黑色"]
-        self.labelHist9 = ["上装样式-不确定", "上装样式-休闲", "上装样式-商务", "上装样式-居家", "上装样式-工作服", "上装样式-简约", "上装样式-运动",]
-        self.labelHist10 = ["发型-不确定", "发型-光头", "发型-短发", "发型-秃头", "发型-长发"]
-        self.labelHist11 = ["下装长度-不确定", "下装长度-中长裙", "下装长度-中长裤", "下装长度-短裙", "下装长度-短裤", "下装长度-长裙", "下装长度-长裤"]
-        self.labelHist12 = ["性别不确定", "性别女", "性别男"]
-        self.labelHist13 = ["下装样式-不确定", "下装样式-休闲", "下装样式-商务", "下装样式-居家", "下装样式-工作服", "下装样式-简约", "下装样式-运动"]
-        self.labelHist14 = ["箱包手持-不确定", "箱包手持-单肩背包", "箱包手持-双肩背包", "箱包手持-塑料袋/购物袋", "箱包手持-婴儿车/抱小孩", "箱包手持-手拎箱包", "箱包手持-斜跨包", "箱包手持-无", "箱包手持-腰包", "箱包手持-行李箱", "箱包手持-购物车", "箱包手持-雨伞"]
-
+        self.labelHist = []
         self.lastOpenDir = None
 
         # Whether we need to save or not.
@@ -136,30 +121,13 @@ class MainWindow(QMainWindow, WindowMixin):
         self.loadPredefinedClasses(defaultPrefdefClassFile)
 
         # Main widgets and related state.
-
         self.labelDialog = LabelDialog(parent=self, listItem=self.labelHist)
-        self.labelDialog1 = LabelDialog(parent=self, listItem=self.labelHist1)
-        self.labelDialog2 = LabelDialog(parent=self, listItem=self.labelHist2)
-        self.labelDialog3 = LabelDialog(parent=self, listItem=self.labelHist3)
-        self.labelDialog4 = LabelDialog(parent=self, listItem=self.labelHist4)
-        self.labelDialog5 = LabelDialog(parent=self, listItem=self.labelHist5)
-        self.labelDialog6 = LabelDialog(parent=self, listItem=self.labelHist6)
-        self.labelDialog7 = LabelDialog(parent=self, listItem=self.labelHist7)
-        self.labelDialog8 = LabelDialog(parent=self, listItem=self.labelHist8)
-        self.labelDialog9 = LabelDialog(parent=self, listItem=self.labelHist9)
-        self.labelDialog10 = LabelDialog(parent=self, listItem=self.labelHist10)
-        self.labelDialog11 = LabelDialog(parent=self, listItem=self.labelHist11)
-        self.labelDialog12 = LabelDialog(parent=self, listItem=self.labelHist12)
-        self.labelDialog13 = LabelDialog(parent=self, listItem=self.labelHist13)
-        self.labelDialog14 = LabelDialog(parent=self, listItem=self.labelHist14)
-
 
         self.itemsToShapes = {}
         self.shapesToItems = {}
         self.prevLabelText = ''
 
         listLayout = QVBoxLayout()
-        # listLayout.setGeometry(QRect(9,9,50,25))
         listLayout.setContentsMargins(0, 0, 0, 0)
 
         # Create a widget for using default label
@@ -170,7 +138,6 @@ class MainWindow(QMainWindow, WindowMixin):
         useDefaultLabelQHBoxLayout.addWidget(self.useDefaultLabelCheckbox)
         useDefaultLabelQHBoxLayout.addWidget(self.defaultLabelTextLine)
         useDefaultLabelContainer = QWidget()
-        # useDefaultLabelContainer.setBaseSize(baseh=100,basew=80)
         useDefaultLabelContainer.setLayout(useDefaultLabelQHBoxLayout)
 
         # Create a widget for edit and diffc button
@@ -187,57 +154,10 @@ class MainWindow(QMainWindow, WindowMixin):
 
         # Create and add a widget for showing current label items
         self.labelList = QListWidget()
-        # self.labelList1 = QListWidget()
-        # self.labelList2 = QListWidget()
-        # self.labelList3 = QListWidget()
-        # self.labelList4 = QListWidget()
-        # self.labelList5 = QListWidget()
-        # self.labelList6 = QListWidget()
-        # self.labelList7 = QListWidget()
-        # self.labelList8 = QListWidget()
-        # self.labelList9 = QListWidget()
-        # self.labelList10 = QListWidget()
-        # self.labelList11 = QListWidget()
-        # self.labelList12 = QListWidget()
-        # self.labelList13 = QListWidget()
-        # self.labelList14 = QListWidget()
-
         labelListContainer = QWidget()
-
         labelListContainer.setLayout(listLayout)
         self.labelList.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList1.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList2.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList3.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList4.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList5.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList6.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList7.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList8.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList9.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList10.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList11.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList12.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList13.itemActivated.connect(self.labelSelectionChanged)
-        # self.labelList14.itemActivated.connect(self.labelSelectionChanged)
-
-
         self.labelList.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList1.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList2.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList3.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList4.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList5.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList6.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList7.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList8.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList9.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList10.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList11.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList12.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList13.itemSelectionChanged.connect(self.labelSelectionChanged)
-        # self.labelList14.itemSelectionChanged.connect(self.labelSelectionChanged)
-
         self.labelList.itemDoubleClicked.connect(self.editLabel)
         # Connect to itemChanged to detect checkbox changes.
         self.labelList.itemChanged.connect(self.labelItemChanged)
@@ -245,8 +165,6 @@ class MainWindow(QMainWindow, WindowMixin):
 
         self.dock = QDockWidget(u'Box Labels', self)
         self.dock.setObjectName(u'Labels')
-        # self.dock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
-        # self.dock.setGeometry(QRect(9,9,50,25))
         self.dock.setWidget(labelListContainer)
 
         # Tzutalin 20160906 : Add file list and dock to move faster
@@ -276,7 +194,6 @@ class MainWindow(QMainWindow, WindowMixin):
         }
         self.scrollArea = scroll
         self.canvas.scrollRequest.connect(self.scrollRequest)
-
 
         self.canvas.newShape.connect(self.newShape)
         self.canvas.shapeMoved.connect(self.setDirty)
@@ -363,7 +280,6 @@ class MainWindow(QMainWindow, WindowMixin):
 
         zoom = QWidgetAction(self)
         zoom.setDefaultWidget(self.zoomWidget)
-
         self.zoomWidget.setWhatsThis(
             u"Zoom in or out of the image. Also accessible with"
             " %s and %s from the canvas." % (fmtShortcut("Ctrl+[-+]"),
@@ -517,7 +433,7 @@ class MainWindow(QMainWindow, WindowMixin):
         size = settings.get(SETTING_WIN_SIZE, QSize(600, 500))
         position = settings.get(SETTING_WIN_POSE, QPoint(0, 0))
         self.resize(size)
-        # self.move(position)
+        self.move(position)
         saveDir = ustr(settings.get(SETTING_SAVE_DIR, None))
         self.lastOpenDir = ustr(settings.get(SETTING_LAST_OPEN_DIR, None))
         if self.defaultSaveDir is None and saveDir is not None and os.path.exists(saveDir):
@@ -742,59 +658,11 @@ class MainWindow(QMainWindow, WindowMixin):
         if not self.canvas.editing():
             return
         item = self.currentItem()
-        items =(item.text()).split(',')
-        text0, coordinates_edit = self.labelDialog.popUp(items[0])
-        if text0 == None:
-            return None
-        text1 = self.labelDialog1.popUp(items[1],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text1 == None: return None
-        text2 = self.labelDialog2.popUp(items[2],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text2 == None: return None
-        text3 = self.labelDialog3.popUp(items[3],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text3 == None: return None
-        text4 = self.labelDialog4.popUp(items[4],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text4 == None: return None
-        text5 = self.labelDialog5.popUp(items[5],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text5 == None: return None
-        text6 = self.labelDialog6.popUp(items[6],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text6 == None: return None
-        text7 = self.labelDialog7.popUp(items[7],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text7 == None: return None
-        text8 = self.labelDialog8.popUp(items[8],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text8 == None: return None
-        text9 = self.labelDialog9.popUp(items[9],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text9 == None: return None
-        text10 = self.labelDialog10.popUp(items[10],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text10 == None: return None
-        text11 = self.labelDialog11.popUp(items[11],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text11 == None: return None
-        text12 = self.labelDialog12.popUp(items[12],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text12 == None: return None
-        text13 = self.labelDialog13.popUp(items[13],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text13 == None: return None
-        text14 = self.labelDialog14.popUp(items[14],move=False, x15=coordinates_edit[0], y15=coordinates_edit[1])
-        if text14 == None: return None
-        text0 = self.labelHist[0] if not text0 else text0
-        text1 = self.labelHist1[0] if not text1 else text1
-        text2 = self.labelHist2[0] if not text2 else text2
-        text3 = self.labelHist3[0] if not text3 else text3
-        text4 = self.labelHist4[0] if not text4 else text4
-        text5 = self.labelHist5[0] if not text5 else text5
-        text6 = self.labelHist6[0] if not text6 else text6
-        text7 = self.labelHist7[0] if not text7 else text7
-        text8 = self.labelHist8[0] if not text8 else text8
-        text9 = self.labelHist9[0] if not text9 else text9
-        text10 = self.labelHist10[0] if not text10 else text10
-        text11 = self.labelHist11[0] if not text11 else text11
-        text12 = self.labelHist12[0] if not text12 else text12
-        text13 = self.labelHist13[0] if not text13 else text13
-        text14 = self.labelHist14[0] if not text14 else text14
-        text = text0 + ',' + text1 + ',' + text2 + ',' + text3 + ',' + text4 + ',' + text5 + ',' + text6 + ',' + text7 + ',' + text8 + ',' + text9 + ',' + text10 + ',' + text11 + ',' + text12 + ',' + text13 + ',' + text14
+        text = self.labelDialog.popUp(item.text())
         if text is not None:
             item.setText(text)
             item.setBackground(generateColorByText(text))
             self.setDirty()
-
 
     # Tzutalin 20160906 : Add file list and dock to move faster
     def fileitemDoubleClicked(self, item=None):
@@ -963,155 +831,20 @@ class MainWindow(QMainWindow, WindowMixin):
             if len(self.labelHist) > 0:
                 self.labelDialog = LabelDialog(
                     parent=self, listItem=self.labelHist)
-            if len(self.labelHist1) > 0:
-                self.labelDialog1 = LabelDialog(
-                    parent=self, listItem=self.labelHist1)
-            if len(self.labelHist2) > 0:
-                self.labelDialog2 = LabelDialog(
-                    parent=self, listItem=self.labelHist2)
-            if len(self.labelHist3) > 0:
-                self.labelDialog3 = LabelDialog(
-                    parent=self, listItem=self.labelHist3)
-            if len(self.labelHist4) > 0:
-                self.labelDialog4 = LabelDialog(
-                    parent=self, listItem=self.labelHist4)
-            if len(self.labelHist5) > 0:
-                self.labelDialog5 = LabelDialog(
-                    parent=self, listItem=self.labelHist5)
-            if len(self.labelHist6) > 0:
-                self.labelDialog6 = LabelDialog(
-                    parent=self, listItem=self.labelHist6)
-            if len(self.labelHist7) > 0:
-                self.labelDialog7 = LabelDialog(
-                    parent=self, listItem=self.labelHist7)
-            if len(self.labelHist8) > 0:
-                self.labelDialog8 = LabelDialog(
-                    parent=self, listItem=self.labelHist8)
-            if len(self.labelHist9) > 0:
-                self.labelDialog9 = LabelDialog(
-                    parent=self, listItem=self.labelHist9)
-            if len(self.labelHist10) > 0:
-                self.labelDialog10 = LabelDialog(
-                    parent=self, listItem=self.labelHist10)
-            if len(self.labelHist11) > 0:
-                self.labelDialog11 = LabelDialog(
-                    parent=self, listItem=self.labelHist11)
-            if len(self.labelHist12) > 0:
-                self.labelDialog12 = LabelDialog(
-                    parent=self, listItem=self.labelHist12)
-            if len(self.labelHist13) > 0:
-                self.labelDialog13 = LabelDialog(
-                    parent=self, listItem=self.labelHist13)
-            if len(self.labelHist14) > 0:
-                self.labelDialog14 = LabelDialog(
-                    parent=self, listItem=self.labelHist14)
-
-
 
             # Sync single class mode from PR#106
-            if self.lastLabel and self.singleClassMode.isChecked():
+            if self.singleClassMode.isChecked() and self.lastLabel:
                 text = self.lastLabel
             else:
-                text0, coordinates = self.labelDialog.popUp()
-                if text0 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel = text0
-                text1 = self.labelDialog1.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text1 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel1 = text1
-                text2 = self.labelDialog2.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text2 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel2 = text2
-                text3 = self.labelDialog3.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text3 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel3 = text3
-                text4 = self.labelDialog4.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text4 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel4 = text4
-                text5 = self.labelDialog5.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text5 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel5 = text5
-                text6 = self.labelDialog6.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text6 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel6 = text6
-                text7 = self.labelDialog7.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text7 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel7 = text7
-                text8 = self.labelDialog8.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text8 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel8 = text8
-                text9 = self.labelDialog9.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text9 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel9 = text9
-                text10 = self.labelDialog10.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text10 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel10 = text10
-                text11 = self.labelDialog11.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text11 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel11 = text11
-                text12 = self.labelDialog12.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text12 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel12 = text12
-                text13 = self.labelDialog13.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text13 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel13 = text13
-                text14 = self.labelDialog14.popUp(move=False, x15=coordinates[0], y15=coordinates[1])
-                if text14 == None:
-                    self.canvas.resetAllLines()
-                    return None
-                self.lastLabel14 = text14
-                text0 = self.labelHist[0] if not text0 else text0
-                text1 = self.labelHist1[0] if not text1 else text1
-                text2 = self.labelHist2[0] if not text2 else text2
-                text3 = self.labelHist3[0] if not text3 else text3
-                text4 = self.labelHist4[0] if not text4 else text4
-                text5 = self.labelHist5[0] if not text5 else text5
-                text6 = self.labelHist6[0] if not text6 else text6
-                text7 = self.labelHist7[0] if not text7 else text7
-                text8 = self.labelHist8[0] if not text8 else text8
-                text9 = self.labelHist9[0] if not text9 else text9
-                text10 = self.labelHist10[0] if not text10 else text10
-                text11 = self.labelHist11[0] if not text11 else text11
-                text12 = self.labelHist12[0] if not text12 else text12
-                text13 = self.labelHist13[0] if not text13 else text13
-                text14 = self.labelHist14[0] if not text14 else text14
-
-                text = text0+','+text1+','+text2+','+text3+','+text4+','+text5+','+text6+','+text7+','+text8+','+text9+','+text10+','+text11+','+text12+','+text13+','+text14
-
+                text = self.labelDialog.popUp(text=self.prevLabelText)
+                self.lastLabel = text
         else:
             text = self.defaultLabelTextLine.text()
 
         # Add Chris
         self.diffcButton.setChecked(False)
         if text is not None:
-            # self.prevLabelText = text
+            self.prevLabelText = text
             generate_color = generateColorByText(text)
             shape = self.canvas.setLastLabel(text, generate_color, generate_color)
             self.addLabel(shape)
@@ -1122,37 +855,8 @@ class MainWindow(QMainWindow, WindowMixin):
                 self.actions.editMode.setEnabled(True)
             self.setDirty()
 
-            # if text0 not in self.labelHist:
-            #     self.labelHist.append(text0)
-            # if text1 not in self.labelHist1:
-            #     self.labelHist.append(text1)
-            # if text2 not in self.labelHist2:
-            #     self.labelHist.append(text2)
-            # if text3 not in self.labelHist3:
-            #     self.labelHist.append(text3)
-            # if text4 not in self.labelHist4:
-            #     self.labelHist.append(text4)
-            # if text5 not in self.labelHist5:
-            #     self.labelHist.append(text5)
-            # if text6 not in self.labelHist6:
-            #     self.labelHist.append(text6)
-            # if text7 not in self.labelHist7:
-            #     self.labelHist.append(text7)
-            # if text8 not in self.labelHist8:
-            #     self.labelHist.append(text8)
-            # if text9 not in self.labelHist9:
-            #     self.labelHist.append(text9)
-            # if text10 not in self.labelHist10:
-            #     self.labelHist.append(text10)
-            # if text11 not in self.labelHist11:
-            #     self.labelHist.append(text11)
-            # if text12 not in self.labelHist12:
-            #     self.labelHist.append(text12)
-            # if text13 not in self.labelHist13:
-            #     self.labelHist.append(text13)
-            # if text14 not in self.labelHist14:
-            #     self.labelHist.append(text14)
-            text = None
+            if text not in self.labelHist:
+                self.labelHist.append(text)
         else:
             # self.canvas.undoLastLine()
             self.canvas.resetAllLines()
@@ -1363,7 +1067,7 @@ class MainWindow(QMainWindow, WindowMixin):
     def scaleFitWidth(self):
         # The epsilon does not seem to work too well here.
         w = self.centralWidget().width() - 2.0
-        return (w / self.canvas.pixmap.width())
+        return w / self.canvas.pixmap.width()
 
     def closeEvent(self, event):
         if not self.mayContinue():
@@ -1674,22 +1378,12 @@ class MainWindow(QMainWindow, WindowMixin):
     def loadPredefinedClasses(self, predefClassesFile):
         if os.path.exists(predefClassesFile) is True:
             with codecs.open(predefClassesFile, 'r', 'utf8') as f:
-                all_labels = f.readlines()
-                self.labelHist = [i.strip('[').strip(']') for i in all_labels[0].split(',')]
-                self.labelHist1 = [i.strip('[').strip(']') for i in all_labels[1].split(',')]
-                self.labelHist2 = [i.strip('[').strip(']') for i in all_labels[2].split(',')]
-                self.labelHist3 = [i.strip('[').strip(']') for i in all_labels[3].split(',')]
-                self.labelHist4 = [i.strip('[').strip(']') for i in all_labels[4].split(',')]
-                self.labelHist5 = [i.strip('[').strip(']') for i in all_labels[5].split(',')]
-                self.labelHist6 = [i.strip('[').strip(']') for i in all_labels[6].split(',')]
-                self.labelHist7 = [i.strip('[').strip(']') for i in all_labels[7].split(',')]
-                self.labelHist8 = [i.strip('[').strip(']') for i in all_labels[8].split(',')]
-                self.labelHist9 = [i.strip('[').strip(']') for i in all_labels[9].split(',')]
-                self.labelHist10 = [i.strip('[').strip(']') for i in all_labels[10].split(',')]
-                self.labelHist11 = [i.strip('[').strip(']') for i in all_labels[11].split(',')]
-                self.labelHist12 = [i.strip('[').strip(']') for i in all_labels[12].split(',')]
-                self.labelHist13 = [i.strip('[').strip(']') for i in all_labels[13].split(',')]
-                self.labelHist14 = [i.strip('[').strip(']') for i in all_labels[14].split(',')]
+                for line in f:
+                    line = line.strip()
+                    if self.labelHist is None:
+                        self.labelHist = [line]
+                    else:
+                        self.labelHist.append(line)
 
     def loadPascalXMLByFilename(self, xmlPath):
         if self.filePath is None:
