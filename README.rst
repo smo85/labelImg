@@ -3,6 +3,7 @@ LabelImg(plus)
 
 blog：https://blog.csdn.net/qq_28792801/article/details/80973927
 OS win10 link: https://pan.baidu.com/s/16V5F6RpHuVMrQnVlfEXuYg
+
 .. image:: https://img.shields.io/pypi/v/labelimg.svg
         :target: https://pypi.python.org/pypi/labelimg
 
