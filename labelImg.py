@@ -1521,17 +1521,28 @@ class MainWindow(QMainWindow, WindowMixin):
         self.canvas.endMove(copy=False)
         self.setDirty()
 
+    def nofilemessage(self):
+        QMessageBox.critical(self, "错误", "未发现data/predefined_classes.txt")
+
+    def fileformatcorrect(self):
+        QMessageBox.critical(self, "错误", "请检查predefined_classes.txt的格式")
+
     def loadPredefinedClasses(self, predefClassesFile):
         if os.path.exists(predefClassesFile) is True:
 
-            with codecs.open(predefClassesFile, 'r', 'utf8') as f:
+            with codecs.open(predefClassesFile, 'r') as f:
                 predefined = f.readlines()
-                while '\n' in predefined:
-                    predefined.remove('\n')
+                predefined = [i.strip() for i in predefined]
+                while '' in predefined:
+                        predefined.remove('')
             if '1' in predefined[-1]:
                 all_labels = predefined[:-1]
-                multiselected = predefined[-1]
-                self.multi_selected = multiselected.split(',')
+                multiselected = predefined[-1].split(',')
+                if len(all_labels) != len(multiselected):
+                    self.fileformatcorrect()
+                    sys.exit()
+                    return
+                self.multi_selected = multiselected
             else:
                 #默认全按住ctrl多选
                 all_labels = predefined
@@ -1541,6 +1552,28 @@ class MainWindow(QMainWindow, WindowMixin):
             for i in range(self.length):
                 exec('self.labelHist{}={}'.format(i, [i.strip() for i in all_labels[i].split(',')]))
         else:
+            message = '''
+                        文件名predefined_classes.txt，
+                        逗号必须是英文输入法的逗号
+                        行数为属性个数，
+                        每个属性中的类以逗号分开，
+                        最后一行是是否需要多选（按住ctrl多选），格式为1,0,1,0这样，1表示可以多选，0表示只能单选
+                        最后一行0和1的总数必须等于以上的属性行数
+                        判断是否需要多选的如果没有最后一行，则默认全部可以多选
+                        
+                        例如：
+                        human, dog, cat, mouse
+                        yellow, white, black
+                        young, middle, old
+                        0,1,0
+                        (重写请删除以上所有内容)
+                    '''
+            if not os.path.exists('data'):
+                os.mkdir('data')
+            with open('data/predefined_classes.txt','w') as f:
+                f.write(message)
+            self.nofilemessage()
+            sys.exit()
             return
     def loadPascalXMLByFilename(self, xmlPath):
         if self.filePath is None:
