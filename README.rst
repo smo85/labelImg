@@ -1,5 +1,6 @@
-LabelImg
+LabelImg(plus)
 ========
+
 blog：https://blog.csdn.net/qq_28792801/article/details/80973927
 
 .. image:: https://img.shields.io/pypi/v/labelimg.svg
